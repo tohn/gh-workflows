@@ -1,8 +1,25 @@
 # gh-workflows
 
-Define reusable [workflows][]/[actions][] to use in my projects.
+Define [reusable workflows][workflows]/[composite actions][actions] to
+use in my projects.
 
-## Usage
+## Usage of composite actions
+
+Insert as a step into your workflow:
+
+```yml
+---
+name: my workflow
+on: push  # yamllint disable-line rule:truthy
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare
+        uses: tohn/gh-workflows@main
+```
+
+## Usage of reusable workflows
 
 Insert as a job into your workflow:
 
@@ -17,9 +34,7 @@ jobs:
       config-file: .markdownlintrc
 ```
 
-## TODO
-
-create and use actions?
+## Sources
 
 * <https://stackoverflow.com/q/59757355>
 * <https://stackoverflow.com/q/75274644>
