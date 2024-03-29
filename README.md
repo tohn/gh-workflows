@@ -2,6 +2,21 @@
 
 Define reusable [workflows][]/[actions][] to use in my projects.
 
+## Usage
+
+Insert as a job into your workflow:
+
+```yml
+---
+name: my workflow
+on: push  # yamllint disable-line rule:truthy
+jobs:
+  linting:
+    uses: tohn/gh-workflows/.github/workflows/linting.yml@main
+    with:
+      config-file: .markdownlintrc
+```
+
 ## TODO
 
 create and use actions?
