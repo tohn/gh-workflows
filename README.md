@@ -18,8 +18,9 @@ jobs:
     steps:
       - name: Prepare
         uses: tohn/gh-workflows@main
-        submodules: false
-        nodejs: true
+        with:
+          submodules: false
+          nodejs: true
 ```
 
 ## Usage of reusable workflows
