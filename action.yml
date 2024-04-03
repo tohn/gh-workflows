@@ -4,23 +4,32 @@ description: 'Check out code & install node.js, hugo and npm dependencies'
 branding:
   icon: 'layers'
   color: 'green'
+inputs:
+  submodules:
+    description: 'Should we checkout git submodules?'
+    default: false
+  nodejs:
+    description: 'Should we install node.js and install npm dependencies?'
+    default: true
 runs:
   using: 'composite'
   steps:
     - name: Check out code
       uses: actions/checkout@v4
       with:
-        # Fetch all history for .GitInfo and .Lastmod
-        fetch-depth: 0
-    - name: Install node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
+        submodules: ${{ inputs.submodules }}  # Fetch Hugo themes (true OR recursive)
+        fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
     - name: Install hugo
       uses: peaceiris/actions-hugo@v3
       with:
         hugo-version: 'latest'
         extended: true
-    - name: Install npm dependencies
+    - if: ${{ inputs.nodejs == 'true' }}
+      name: Install node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - if: ${{ inputs.nodejs == 'true' }}
+      name: Install npm dependencies
       run: npm i
       shell: bash

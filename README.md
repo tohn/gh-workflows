@@ -5,7 +5,8 @@ use in my projects.
 
 ## Usage of composite actions
 
-Insert as a step into your workflow:
+Insert as a step into your workflow (and maybe adjust `submodules` and
+`nodejs`):
 
 ```yml
 ---
@@ -17,6 +18,8 @@ jobs:
     steps:
       - name: Prepare
         uses: tohn/gh-workflows@main
+        submodules: false
+        nodejs: true
 ```
 
 ## Usage of reusable workflows
