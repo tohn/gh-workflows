@@ -13,7 +13,7 @@ inputs:
     default: true
   hugo_version:
     description: 'Version of hugo to install'
-    default: 'v0.139.4'
+    default: '0.139.4'
 runs:
   using: 'composite'
   steps:
