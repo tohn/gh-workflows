@@ -8,6 +8,9 @@ inputs:
   submodules:
     description: 'Should we checkout git submodules?'
     default: false
+  dart_sass:
+    description: 'Should we install dart-sass?'
+    default: false
   nodejs:
     description: 'Should we install node.js and install npm dependencies?'
     default: true
@@ -27,6 +30,13 @@ runs:
       with:
         hugo-version: ${{ inputs.hugo_version }}
         extended: true
+    # https://gohugo.io/host-and-deploy/host-on-github-pages/
+    # https://github.com/gohugoio/hugoDocs/pull/3122/files
+    # https://github.com/gohugoio/hugoDocs/pull/3125/files
+    # https://github.com/dw-labs-org/dart-sass-gha
+    - if: ${{ inputs.dart_sass == 'true' }}
+      name: Install dart-sass
+      uses: dw-labs-org/dart-sass-gha@v1
     - if: ${{ inputs.nodejs == 'true' }}
       name: Install node.js
       uses: actions/setup-node@v4
