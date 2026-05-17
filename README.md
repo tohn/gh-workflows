@@ -5,8 +5,7 @@ use in my projects.
 
 ## Usage of composite actions
 
-Insert as a step into your workflow (and maybe adjust `submodules` and
-`nodejs`):
+Insert as a step into your workflow (and maybe adjust some settings):
 
 ```yml
 ---
@@ -20,7 +19,11 @@ jobs:
         uses: tohn/gh-workflows@main
         with:
           submodules: false
+          history: 1
+          dart_sass: false
           nodejs: true
+          hugo_version: 'latest'
+          hugo_extended: false
 ```
 
 ## Usage of reusable workflows
