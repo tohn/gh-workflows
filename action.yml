@@ -27,7 +27,7 @@ runs:
   using: 'composite'
   steps:
     - name: Check out code
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         submodules: ${{ inputs.submodules }}  # Fetch Hugo themes (true OR recursive)
         fetch-depth: ${{ inputs.history }}
