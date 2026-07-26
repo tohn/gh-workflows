@@ -45,7 +45,7 @@ runs:
       uses: dw-labs-org/dart-sass-gha@v1
     - if: ${{ inputs.nodejs == 'true' }}
       name: Install node.js
-      uses: actions/setup-node@v6
+      uses: actions/setup-node@v7
       with:
         node-version: '24'
     - if: ${{ inputs.nodejs == 'true' }}
