@@ -17,6 +17,9 @@ inputs:
   nodejs:
     description: 'Should we install node.js and install npm dependencies?'
     default: true
+  audit:
+    description: 'Should we audit dependencies first?'
+    default: true
   hugo_version:
     description: 'Version of hugo to install (Default: latest, Example: 0.152.0)'
     default: 'latest'
@@ -48,6 +51,10 @@ runs:
       uses: actions/setup-node@v7
       with:
         node-version: '24'
+    - if: ${{ (inputs.nodejs == 'true') && ($inputs.audit == 'true') }}
+      name: Audit npm dependencies
+      run: npm audit
+      shell: bash
     - if: ${{ inputs.nodejs == 'true' }}
       name: Install npm dependencies
       run: npm i

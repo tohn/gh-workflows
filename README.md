@@ -22,6 +22,7 @@ jobs:
           history: 1
           dart_sass: false
           nodejs: true
+          audit: true
           hugo_version: 'latest'
           hugo_extended: false
 ```
