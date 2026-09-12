@@ -51,7 +51,8 @@ runs:
       uses: actions/setup-node@v7
       with:
         node-version: '24'
-    - if: ${{ (inputs.nodejs == 'true') && ($inputs.audit == 'true') }}
+    # https://github.com/orgs/community/discussions/27152
+    - if: ${{ (inputs.nodejs == 'true') && (inputs.audit == 'true') }}
       name: Audit npm dependencies
       run: npm audit
       shell: bash
